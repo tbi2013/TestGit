@@ -1,25 +1,17 @@
-import numpy as np
 import pandas as pd
-import scipy.stats
+import csv
+# rs = pd.DataFrame.from_csv(r'C:/Users/tbi2013/Downloads/dump/followers.csv',encoding='utf-8')
+rs = pd.read_csv(r'C:/Users/tbi2013/Downloads/dump/followers.csv',encoding='utf-8')
 
-# Create two lists of random values
-x = [1,2,3,4,5,6,7,8,9]
-y = [2,1,2,4.5,7,6.5,6,9,9.5]
+with open('C:/Users/tbi2013/Downloads/dump/followers.csv','r') as csvfile:
+with open('C:/Users/tbi2013/Downloads/dump/watchers.csv','r') as csvfile:
 
-# Create a function that takes in x's and y's
-def spearmans_rank_correlation(xs, ys):
-
-    # Calculate the rank of x's
-    xranks = pd.Series(xs).rank()
-
-    # Caclulate the ranking of the y's
-    yranks = pd.Series(ys).rank()
-
-    # Calculate Pearson's correlation coefficient on the ranked versions of the data
-    return scipy.stats.pearsonr(xranks, yranks)
-
-    # Run the function
-    spearmans_rank_correlation(x, y)[0]
-
-# Just to check our results, here it Spearman's using Scipy
-scipy.stats.spearmanr(x, y)[0]
+    reader = csv.reader(csvfile)
+    rows = [row for row in reader]
+csv_title = rows[0]
+csv_title = csv_title[1:]
+len_csv_title = len(csv_title)
+for i in range(len_csv_title):
+    for j in range(i+1,len_csv_title):
+        print(str(csv_title[i]) + "_" + str(csv_title[j]) + " = " + str(rs[csv_title[i]].corr(rs[csv_title[j]])), end='\t')
+    print()
