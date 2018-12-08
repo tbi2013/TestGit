@@ -1,9 +1,9 @@
 import pandas as pd
 import csv
 # rs = pd.DataFrame.from_csv(r'C:/Users/tbi2013/Downloads/dump/followers.csv',encoding='utf-8')
-rs = pd.read_csv(r'C:/Users/tbi2013/Downloads/dump/followers.csv',encoding='utf-8')
+rs = pd.read_csv(r'C:/Users/tbi2013/Downloads/Grade.csv',encoding='utf-8')
 
-with open('C:/Users/tbi2013/Downloads/dump/followers.csv','r') as csvfile:
+with open('C:/Users/tbi2013/Downloads/Grade.csv','r') as csvfile:
 
     reader = csv.reader(csvfile)
     rows = [row for row in reader]
